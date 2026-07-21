@@ -1,6 +1,6 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.3.3
+// Version:      v1.3.4
 // Modified:     2026-07-21
 //
 // BNB_SearchFruitSettings.c - search-fruit config block + loader. Reads the
@@ -13,13 +13,13 @@ class BNB_SearchFruitConfigBlock
     float plum_drop_chance       = 0.30;
     float pear_drop_chance       = 0.30;
     float search_duration_seconds = 10.0;
-    int   tree_cooldown_minutes  = 30;
-    int   apple_min_count        = 2;
-    int   apple_max_count        = 4;
-    int   plum_min_count         = 2;
-    int   plum_max_count         = 4;
-    int   pear_min_count         = 2;
-    int   pear_max_count         = 4;
+    int   tree_cooldown_minutes  = 60;
+    int   apple_min_count        = 1;
+    int   apple_max_count        = 2;
+    int   plum_min_count         = 1;
+    int   plum_max_count         = 2;
+    int   pear_min_count         = 1;
+    int   pear_max_count         = 2;
     int   food_stage_enable      = 1;
     float food_dried_chance      = 0.0;
     float food_rotten_chance     = 0.10;

@@ -1,7 +1,7 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.3.2
-// Modified:     2026-07-21
+// Version:      v1.3.3
+// Modified:     2026-07-22
 //
 // BNB_SharedForageHelpers.c - food-stage roll + apply, the shared hands-first
 // spawn, and the bare-hand cut roll, used by every foraging verb. Chances are
@@ -65,6 +65,14 @@ class BNB_SharedForageHelpers
             }
         }
         return true;
+    }
+
+    // Free-hands gate: true when search_requires_free_hands is on and the player is
+    // holding something, so the Search option stays off the scroll wheel.
+    static bool BlockedByFullHands(PlayerBase player)
+    {
+        if (!BNB_ForagingConfig.RequiresFreeHands()) return false;
+        return player && player.GetHumanInventory() && player.GetHumanInventory().GetEntityInHands() != null;
     }
 
     // Debug sink for the foraging verbs; no-op unless foraging.json debug_log=1.

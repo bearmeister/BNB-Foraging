@@ -1,7 +1,7 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.0.9
-// Modified:     2026-07-21
+// Version:      v1.0.10
+// Modified:     2026-07-22
 //
 // BNB_ActionSearchFruit.c - continuous "Search for fruit" action on fruit trees. Cursor-
 // targeted, no item. Server rolls count + food stage and spawns fruit in front
@@ -54,6 +54,8 @@ class ActionSearchFruit : ActionContinuousBase
         if (!target) return false;
         Object obj = target.GetObject();
         if (!obj) return false;
+
+        if (BNB_SharedForageHelpers.BlockedByFullHands(player)) return false;
 
         if (obj.IsInherited(ItemBase)) return false;
 

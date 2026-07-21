@@ -1,6 +1,6 @@
 # BNB-Foraging
 
-**v1.4.4**
+**v1.4.6**
 
 Forage the Chernarus wilderness for food. Three foraging actions on vanilla
 DayZ world objects (pick fruit from trees, mushrooms from stumps and berries
@@ -15,8 +15,9 @@ data.
 - **Search for berries**: search a berry bush (rose hips, elderberries) for
   berries.
 
-Each search has its own find chance and yield range. The first item goes
-straight to your hands; any extras scatter on the ground at your feet.
+Each search has its own find chance and yield range. Your hands must be free
+to search (server owners can turn this off): the first find goes into your
+empty hands, any extras scatter on the ground at your feet.
 
 ## Bare hands have a price
 
@@ -58,8 +59,11 @@ The file is created at `$profile:BNBForaging/foraging.json` on first server
 start and re-saved each boot, so new options from an update appear
 automatically with their defaults.
 
-One top-level option:
+Two top-level options:
 
+- `search_requires_free_hands` (default `1`): `1` shows the Search action only
+  with empty hands (the first find goes to a free hand); `0` lets players
+  search while holding an item (every find drops to the ground).
 - `debug_log` (default `0`): `1` logs every search to the server RPT (tagged
   `BNB_Foraging::Debug`) with player, target, yield, hands-vs-ground and cut.
   Config load success or failure is always logged.
@@ -70,8 +74,8 @@ each carrying the same options. Defaults:
 | Option | search_fruit | search_mushrooms | search_berries |
 |---|---|---|---|
 | find chance (`0..1`) | `apple`/`plum`/`pear_drop_chance` `0.30` each | `mushroom_find_chance` `0.50` | `berry_find_chance` `0.70` |
-| yield range (inclusive) | `2` to `4` per fruit type | `1` to `3` | `1` to `3` |
-| `*_cooldown_minutes` (0 = none) | `tree` `30` | `stump` `30` | `bush` `30` |
+| yield range (inclusive) | `1` to `2` per fruit type | `1` to `3` | `1` to `4` |
+| `*_cooldown_minutes` (0 = none) | `tree` `60` | `stump` `60` | `bush` `60` |
 | `search_duration_seconds` | `10.0` | `10.0` | `10.0` |
 | `cut_chance_no_gloves` (0 = off) | `0.10` | `0.05` | `0.15` |
 | `glove_damage` | `4.0` | `4.0` | `4.0` |

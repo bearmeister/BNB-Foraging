@@ -1,6 +1,6 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.1.2
+// Version:      v1.1.3
 // Modified:     2026-07-21
 //
 // BNB_SearchBerriesSettings.c - search-berries config block + loader. Reads the
@@ -11,9 +11,9 @@ class BNB_SearchBerriesConfigBlock
 {
     float berry_find_chance       = 0.70;
     float search_duration_seconds = 10.0;
-    int   bush_cooldown_minutes   = 30;
+    int   bush_cooldown_minutes   = 60;
     int   berry_min_count         = 1;
-    int   berry_max_count         = 3;
+    int   berry_max_count         = 4;
     int   food_stage_enable       = 1;
     float food_dried_chance       = 0.0;
     float food_rotten_chance      = 0.10;

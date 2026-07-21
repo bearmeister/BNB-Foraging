@@ -1,6 +1,6 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.1.3
+// Version:      v1.1.4
 // Modified:     2026-07-21
 //
 // BNB_SearchMushroomsSettings.c - search-mushrooms config block + loader. Reads the
@@ -11,7 +11,7 @@ class BNB_SearchMushroomsConfigBlock
 {
     float mushroom_find_chance    = 0.50;
     float search_duration_seconds = 10.0;
-    int   stump_cooldown_minutes  = 30;
+    int   stump_cooldown_minutes  = 60;
     int   mushroom_min_count      = 1;
     int   mushroom_max_count      = 3;
     int   food_stage_enable       = 1;

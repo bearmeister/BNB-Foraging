@@ -1,7 +1,7 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.1.3
-// Modified:     2026-07-21
+// Version:      v1.1.4
+// Modified:     2026-07-22
 //
 // BNB_ActionSearchBerries.c - continuous "Search for berries" action on berry
 // bushes (rosaCanina -> CaninaBerry, sambucusNigra -> SambucusBerry). Cursor-
@@ -54,6 +54,8 @@ class ActionSearchBerries : ActionContinuousBase
         if (!target) return false;
         Object obj = target.GetObject();
         if (!obj) return false;
+
+        if (BNB_SharedForageHelpers.BlockedByFullHands(player)) return false;
 
         if (obj.IsInherited(ItemBase)) return false;
         if (obj.IsInherited(Man)) return false;
