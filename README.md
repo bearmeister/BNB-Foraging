@@ -92,13 +92,9 @@ Notes:
 
 ## Install
 
-Subscribe on the Steam Workshop (recommended for players and most servers):
+Subscribe on the Steam Workshop
 
 https://steamcommunity.com/sharedfiles/filedetails/?id=3768283328
-
-For a manual server install, drop the packed `@BNB-Foraging` mod folder into
-the server's mod set and load it. The mod is server-side driven; clients only
-need it loaded.
 
 ## Build
 
