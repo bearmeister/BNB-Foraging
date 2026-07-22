@@ -1,8 +1,8 @@
 # Changelog
 
 Notable changes to BNB-Foraging. Versions here follow the Steam Workshop
-releases. Source history in this repository starts at v1.4.4, so `v` tags exist
-only from that release onward; earlier entries are recorded for reference.
+releases. Source history in this repository starts at v1.4.4; not every Workshop
+release is tagged here, and earlier entries are recorded for reference.
 
 ## v1.5.1
 
@@ -13,8 +13,8 @@ only from that release onward; earlier entries are recorded for reference.
 
 - A licence file is bundled with the mod itself, covering use, attribution and
   monetisation.
-- Compatibility with the current DayZ scripting API: action registration now
-  uses the `SetActions` form that takes the input action map.
+- Compatibility with the current DayZ scripting API: cursor actions are
+  attached via the `SetActions` form that takes the input action map.
 - Compatibility: the action classes are namespaced (`BNB_ActionSearchFruit`,
   `BNB_ActionSearchMushrooms`, `BNB_ActionSearchBerries` and their callbacks),
   so they can no longer collide with identically named classes from another mod.

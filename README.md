@@ -128,3 +128,7 @@ loot to balance.
 Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
 Modify, repack and fork for non-commercial use with attribution. See
 [LICENSE](LICENSE).
+
+DAYZ is a registered trademark of Bohemia Interactive a.s. This is an
+unofficial modification that is not affiliated or authorized by Bohemia
+Interactive a.s.
