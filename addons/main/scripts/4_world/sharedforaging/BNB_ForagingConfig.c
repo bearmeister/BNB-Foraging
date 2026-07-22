@@ -1,6 +1,6 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.2.1
+// Version:      v1.2.2
 // Modified:     2026-07-22
 //
 // BNB_ForagingConfig.c - root JSON schema + loader for
@@ -50,6 +50,15 @@ class BNB_ForagingConfig
         {
             Print("[BNB_Foraging] foraging.json load FAILED (" + err + ") - using defaults");
             return s_Config;
+        }
+        if (data.version != VERSION_EXPECTED)
+        {
+            // Backup-then-adopt: loaded values are kept, the operator gets a
+            // rollback copy of the pre-migration file.
+            string bak = PATH + ".v" + data.version.ToString() + ".bak";
+            CopyFile(PATH, bak);
+            Print("[BNB_Foraging] foraging.json version " + data.version.ToString() + " -> " + VERSION_EXPECTED.ToString() + ", backup written to " + bak);
+            data.version = VERSION_EXPECTED;
         }
         s_Config = data;
         // Re-save so keys added in a newer version appear with their defaults.

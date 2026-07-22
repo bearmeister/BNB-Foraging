@@ -1,6 +1,6 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.1.4
+// Version:      v1.1.5
 // Modified:     2026-07-22
 //
 // BNB_ActionSearchBerries.c - continuous "Search for berries" action on berry
@@ -8,7 +8,7 @@
 // targeted, no item. Server rolls count + food stage and spawns berries in front
 // of the player; per-bush cooldown gates re-use (client gate hides until expiry).
 
-class ActionSearchBerriesCB : ActionContinuousBaseCB
+class BNB_ActionSearchBerriesCB : ActionContinuousBaseCB
 {
     override void CreateActionComponent()
     {
@@ -23,11 +23,11 @@ class ActionSearchBerriesCB : ActionContinuousBaseCB
     }
 }
 
-class ActionSearchBerries : ActionContinuousBase
+class BNB_ActionSearchBerries : ActionContinuousBase
 {
-    void ActionSearchBerries()
+    void BNB_ActionSearchBerries()
     {
-        m_CallbackClass = ActionSearchBerriesCB;
+        m_CallbackClass = BNB_ActionSearchBerriesCB;
 
         m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_INTERACT;
         m_FullBody = true;

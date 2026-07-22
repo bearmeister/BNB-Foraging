@@ -1,6 +1,6 @@
 # Organisation: Bullets'n'Bandages
 # Author:       Bushy <contact@bushy.dev>
-# Version:      v1.0.6
+# Version:      v1.0.8
 # Modified:     2026-07-22
 #
 # project.toml - hemtt build config for @BNB-Foraging client+server mod
@@ -12,8 +12,8 @@ author = "Bushy"
 
 [version]
 major = 1
-minor = 4
-patch = 8
+minor = 5
+patch = 1
 build = 0
 
 [signing]

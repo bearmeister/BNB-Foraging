@@ -1,6 +1,6 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.0.10
+// Version:      v1.0.11
 // Modified:     2026-07-22
 //
 // BNB_ActionSearchMushrooms.c - continuous "Search for mushrooms" action on forest tree
@@ -10,7 +10,7 @@
 // BNB_SharedForageCooldownRegistry's cooldown registry - keys are namespaced by class name
 // and rounded position so stump + tree entries coexist.
 
-class ActionSearchMushroomsCB : ActionContinuousBaseCB
+class BNB_ActionSearchMushroomsCB : ActionContinuousBaseCB
 {
     override void CreateActionComponent()
     {
@@ -25,11 +25,11 @@ class ActionSearchMushroomsCB : ActionContinuousBaseCB
     }
 }
 
-class ActionSearchMushrooms : ActionContinuousBase
+class BNB_ActionSearchMushrooms : ActionContinuousBase
 {
-    void ActionSearchMushrooms()
+    void BNB_ActionSearchMushrooms()
     {
-        m_CallbackClass = ActionSearchMushroomsCB;
+        m_CallbackClass = BNB_ActionSearchMushroomsCB;
 
         m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_INTERACT;
         m_FullBody = true;

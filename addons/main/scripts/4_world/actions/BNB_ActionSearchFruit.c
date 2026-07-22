@@ -1,6 +1,6 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.0.10
+// Version:      v1.0.11
 // Modified:     2026-07-22
 //
 // BNB_ActionSearchFruit.c - continuous "Search for fruit" action on fruit trees. Cursor-
@@ -8,7 +8,7 @@
 // of the player; per-tree cooldown gates re-use (client gate hides until
 // expiry).
 
-class ActionSearchFruitCB : ActionContinuousBaseCB
+class BNB_ActionSearchFruitCB : ActionContinuousBaseCB
 {
     override void CreateActionComponent()
     {
@@ -23,11 +23,11 @@ class ActionSearchFruitCB : ActionContinuousBaseCB
     }
 }
 
-class ActionSearchFruit : ActionContinuousBase
+class BNB_ActionSearchFruit : ActionContinuousBase
 {
-    void ActionSearchFruit()
+    void BNB_ActionSearchFruit()
     {
-        m_CallbackClass = ActionSearchFruitCB;
+        m_CallbackClass = BNB_ActionSearchFruitCB;
 
         m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_INTERACT;
         m_FullBody = true;
