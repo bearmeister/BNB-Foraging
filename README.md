@@ -1,6 +1,6 @@
 # BNB-Foraging
 
-**v1.4.7**
+**v1.4.8**
 
 Forage the Chernarus wilderness for food. Three foraging actions on vanilla
 DayZ world objects (pick fruit from trees, mushrooms from stumps and berries
@@ -111,9 +111,11 @@ Notes:
 
 ## Status
 
-This repository is a one-way source publication of the mod shipped on the
-Steam Workshop. It does not accept issues or pull requests. Fork it if you
-want to build on it, within the license terms below.
+This repository is a one-way, automatically published mirror of the mod
+shipped on the Steam Workshop. It does not accept issues or pull requests.
+Fork it if you want to build on it, within the license terms below.
+
+Version history is in [CHANGELOG.md](CHANGELOG.md).
 
 ## Credits
 
