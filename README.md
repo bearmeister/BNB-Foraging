@@ -1,6 +1,6 @@
 # BNB-Foraging
 
-**v1.4.6**
+**v1.4.7**
 
 Forage the Chernarus wilderness for food. Three foraging actions on vanilla
 DayZ world objects (pick fruit from trees, mushrooms from stumps and berries
@@ -16,8 +16,8 @@ data.
   berries.
 
 Each search has its own find chance and yield range. Your hands must be free
-to search (server owners can turn this off): the first find goes into your
-empty hands, any extras scatter on the ground at your feet.
+to search: the first find goes into your empty hands, any extras scatter on
+the ground at your feet.
 
 ## Bare hands have a price
 
@@ -59,11 +59,8 @@ The file is created at `$profile:BNBForaging/foraging.json` on first server
 start and re-saved each boot, so new options from an update appear
 automatically with their defaults.
 
-Two top-level options:
+One top-level option:
 
-- `search_requires_free_hands` (default `1`): `1` shows the Search action only
-  with empty hands (the first find goes to a free hand); `0` lets players
-  search while holding an item (every find drops to the ground).
 - `debug_log` (default `0`): `1` logs every search to the server RPT (tagged
   `BNB_Foraging::Debug`) with player, target, yield, hands-vs-ground and cut.
   Config load success or failure is always logged.

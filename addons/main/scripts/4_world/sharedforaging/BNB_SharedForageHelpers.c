@@ -1,6 +1,6 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.3.3
+// Version:      v1.3.4
 // Modified:     2026-07-22
 //
 // BNB_SharedForageHelpers.c - food-stage roll + apply, the shared hands-first
@@ -67,11 +67,10 @@ class BNB_SharedForageHelpers
         return true;
     }
 
-    // Free-hands gate: true when search_requires_free_hands is on and the player is
-    // holding something, so the Search option stays off the scroll wheel.
+    // Searching needs empty hands (the first find goes to a free hand); a held
+    // item keeps the Search option off the scroll wheel.
     static bool BlockedByFullHands(PlayerBase player)
     {
-        if (!BNB_ForagingConfig.RequiresFreeHands()) return false;
         return player && player.GetHumanInventory() && player.GetHumanInventory().GetEntityInHands() != null;
     }
 

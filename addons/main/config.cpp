@@ -16,7 +16,7 @@ class CfgPatches
         weapons[] = {};
         requiredVersion = 0.1;
         requiredAddons[] = { "DZ_Data", "DZ_Scripts" };
-        version = "1.4.6";
+        version = "1.4.7";
     };
 };
 

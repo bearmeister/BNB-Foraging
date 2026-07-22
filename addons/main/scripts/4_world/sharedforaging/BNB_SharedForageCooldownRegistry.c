@@ -1,7 +1,7 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.3.0
-// Modified:     2026-07-20
+// Version:      v1.3.1
+// Modified:     2026-07-22
 //
 // BNB_SharedForageCooldownRegistry.c - per-object forage cooldowns, shared by
 // all three search verbs; in-memory map over a $profile append-only log.
@@ -91,9 +91,10 @@ class BNB_SharedForageCooldownRegistry
         if (!FileExist(COOLDOWN_DIR))
             MakeDirectory(COOLDOWN_DIR);
 
-        // APPEND is not guaranteed to create a missing file; fall back to WRITE.
+        // APPEND is not guaranteed to create a missing file; fall back to WRITE
+        // only when the file is absent (WRITE truncates an existing log).
         FileHandle fh = OpenFile(COOLDOWN_FILE, FileMode.APPEND);
-        if (!fh)
+        if (!fh && !FileExist(COOLDOWN_FILE))
             fh = OpenFile(COOLDOWN_FILE, FileMode.WRITE);
         if (!fh)
         {

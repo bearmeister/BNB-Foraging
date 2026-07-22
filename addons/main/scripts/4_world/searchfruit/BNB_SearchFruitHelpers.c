@@ -1,7 +1,7 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.1.0
-// Modified:     2026-07-20
+// Version:      v1.2.0
+// Modified:     2026-07-22
 //
 // BNB_SearchFruitHelpers.c - fruit-tree classification + fruit spawn. Resolution
 // order: exact vanilla classname, then CfgVehicles fruitType, then Latin genus.
@@ -20,12 +20,16 @@ class BNB_SearchFruitHelpers
     static ref map<string, int> s_KnownTrees;
     static ref map<string, int> s_GenusFruit;
     static ref map<string, int> s_FruitNames;
+    // Per-classname classification memo (NONE cached too) - ActionCondition runs
+    // per frame, so the config/genus resolution must not.
+    static ref map<string, int> s_ClassCache;
 
     static void Init()
     {
         if (s_GenusFruit)
             return;
 
+        s_ClassCache = new map<string, int>();
         s_GenusFruit = new map<string, int>();
         s_GenusFruit.Set("malus",  eBNB_SearchFruitType.APPLE);
         s_GenusFruit.Set("prunus", eBNB_SearchFruitType.PLUM);
@@ -67,14 +71,28 @@ class BNB_SearchFruitHelpers
         string probe = typeName;
         probe.ToLower();
 
-        if (s_KnownTrees.Find(probe, fruitType))
-            return true;
-        if (FruitFromConfig(typeName, fruitType))
-            return true;
+        if (s_ClassCache.Find(probe, fruitType))
+            return fruitType != eBNB_SearchFruitType.NONE;
+
+        fruitType = ClassifyFruitTree(typeName, probe);
+        s_ClassCache.Set(probe, fruitType);
+        return fruitType != eBNB_SearchFruitType.NONE;
+    }
+
+    // One-time resolution per classname; result is memoised by IsFruitTree.
+    private static int ClassifyFruitTree(string typeName, string probe)
+    {
+        int ft;
+        if (s_KnownTrees.Find(probe, ft))
+            return ft;
+        if (FruitFromConfig(typeName, ft))
+            return ft;
         // Genus scan is the forward-compat path; gate it so only trees qualify.
         if (probe.IndexOf("tree") == -1)
-            return false;
-        return FruitFromGenus(probe, fruitType);
+            return eBNB_SearchFruitType.NONE;
+        if (FruitFromGenus(probe, ft))
+            return ft;
+        return eBNB_SearchFruitType.NONE;
     }
 
     // Some trees declare a fruitType string in CfgVehicles; map it to the enum.
