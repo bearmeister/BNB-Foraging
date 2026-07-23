@@ -1,6 +1,6 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.1.3
+// Version:      v1.1.4
 // Modified:     2026-07-22
 //
 // config.cpp - @BNB-Foraging client+server mod. Adds "Search for fruit" (trees),
