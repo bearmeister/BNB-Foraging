@@ -8,6 +8,9 @@ from bushes) with a bare-hand injury risk, per-object cooldowns and full
 server-side tuning. No new items: everything it spawns is vanilla DayZ game
 data.
 
+**This mod is free for community use, repack or fork, and always will be, with
+attribution. See the License section below.**
+
 ## What it adds
 
 - **Search for fruit**: search a fruit tree for apples, plums or pears.
@@ -15,34 +18,33 @@ data.
 - **Search for berries**: search a berry bush (rose hips, elderberries) for
   berries.
 
-Each search has its own find chance and yield range. Your hands must be free
-to search: the first find goes into your empty hands, any extras scatter on
-the ground at your feet.
+Each search has its own find chance and yield range. The player's hands must be
+free to search: the first find goes into their empty hands, any extras scatter
+on the ground at their feet.
 
 ## Bare hands have a price
 
-Foraging bare-handed, or with ruined gloves, can cut you: a bleeding forearm
-and a sharp jolt that makes you wince. Wear an intact pair of gloves and you
-are protected, but they take wear with every search and will eventually ruin.
-Thorny berry bushes bite more often than fruit trees or stumps. The small
-shock on a cut is a fixed part of the mechanic and is not configurable.
+Foraging bare-handed, or with ruined gloves, can cut the player: a bleeding
+forearm and a sharp jolt. An intact pair of gloves protects them, but the gloves
+take wear with every search and will eventually ruin. Thorny berry bushes bite
+more often than fruit trees or stumps. The small shock on a cut is a fixed part
+of the mechanic and is not configurable.
 
 ## Cooldowns
 
-Every tree, stump and bush tracks its own cooldown after you search it, so you
-cannot farm one spot dry. Cooldowns run on real time and survive server
-restarts.
+Every tree, stump and bush tracks its own cooldown once searched, so no single
+spot can be farmed dry. Cooldowns run on real time and survive server restarts.
 
 ## Food quality
 
-Foraged food can come up fresh, dried or rotten. The odds are yours to set.
+Foraged food can come up fresh, dried or rotten. The odds are server-configurable.
 
 ## Server setup: turn off the wild fruit and mushrooms
 
 By default DayZ scatters fruit under fruit trees and mushrooms across the
 forest floor on its own, so out of the box players would just pick them up off
 the ground and never need to forage. To make this mod the real source, disable
-those ground spawns in your mission's `db/events.xml` by setting `active = 0`
+those ground spawns in the server's mission `db/events.xml` by setting `active = 0`
 on the six Trajectory events:
 
 - `TrajectoryApple`, `TrajectoryPear`, `TrajectoryPlum` (fruit under trees)
@@ -50,8 +52,8 @@ on the six Trajectory events:
   mushrooms)
 
 Berries need no change: vanilla already ships those spawns off. Built for
-Chernarus; other maps have their own equivalent Trajectory events if you want
-the same wild-spawn cleanup.
+Chernarus; other maps have their own equivalent Trajectory events for the same
+wild-spawn cleanup.
 
 ## Configuration: foraging.json
 
