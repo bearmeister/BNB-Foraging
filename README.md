@@ -42,8 +42,9 @@ ground and never need to forage. To make this mod the real source, disable those
 ground spawns in the server's mission `db/events.xml` by setting `active = 0` on
 the six Trajectory events:
 
-- TrajectoryApple, TrajectoryPear, TrajectoryPlum (fruit under trees)
-- TrajectoryConiferous, TrajectoryDeciduous, TrajectoryHumus (forest mushrooms)
+- `TrajectoryApple`, `TrajectoryPear`, `TrajectoryPlum` (fruit under trees)
+- `TrajectoryConiferous`, `TrajectoryDeciduous`, `TrajectoryHumus` (forest
+  mushrooms)
 
 Berries need no change - vanilla already ships those spawns off.
 
@@ -53,31 +54,22 @@ The file is created at `$profile:BNBForaging/foraging.json` on first server star
 and re-saved each boot, so new options from an update appear automatically with
 their defaults. One top-level option, plus a block per search:
 
-- **debug_log** (default 0) - 1 logs every search to the server RPT (tagged
-  BNB_Foraging::Debug) with player, target, yield, hands-vs-ground and cut.
+- **`debug_log`** (default 0) - 1 logs every search to the server RPT (tagged
+  `BNB_Foraging::Debug`) with player, target, yield, hands-vs-ground and cut.
   Config load success or failure is always logged.
 
-Each block - **search_fruit**, **search_mushrooms**, **search_berries** -
+Each block - **`search_fruit`**, **`search_mushrooms`**, **`search_berries`** -
 carries the same options (defaults shown fruit / mushroom / berry):
 
-- **find chance** - 0..1 chance a search yields. Fruit is per type
-  (apple_drop_chance, plum_drop_chance, pear_drop_chance, 0.30 each);
-  mushroom_find_chance 0.50; berry_find_chance 0.70.
-- **min_count / max_count** - inclusive yield range on a successful search.
-  Fruit 1 to 2 each, mushrooms 1 to 3, berries 1 to 4.
-- **cooldown minutes** - per-object cooldown before the same tree/stump/bush can
-  be searched again (0 = none). 60 (1 hour) by default
-  (tree_/stump_/bush_cooldown_minutes).
-- **search_duration_seconds** (10.0) - how long the player holds the action.
-  Clamped 0.5 to 60.
-- **cut_chance_no_gloves** - 0..1 chance a bare-handed or ruined-glove search
-  cuts the player. Fruit 0.10, mushrooms 0.05, berries 0.15. 0 turns cuts off.
-- **glove_damage** (4.0) - HP an intact glove loses per search while protecting
-  from a cut (about 25 searches to ruin a fresh glove); matches vanilla
-  stick-gathering wear.
-- **food_stage_enable** (1), **food_dried_chance** (0.0), **food_rotten_chance**
-  (0.10) - roll a dried or rotten food stage on each foraged item, otherwise it
-  spawns fresh.
+| Option | Detail |
+|---|---|
+| **find chance** | 0..1 chance a search yields. Fruit is per type (`apple_drop_chance`, `plum_drop_chance`, `pear_drop_chance`, 0.30 each); `mushroom_find_chance` 0.50; `berry_find_chance` 0.70. |
+| **`min_count` / `max_count`** | inclusive yield range on a successful search. Fruit 1 to 2 each, mushrooms 1 to 3, berries 1 to 4. |
+| **cooldown minutes** | per-object cooldown before the same tree/stump/bush can be searched again (0 = none). 60 (1 hour) by default (`tree_/stump_/bush_cooldown_minutes`). |
+| **`search_duration_seconds`** (10.0) | how long the player holds the action. Clamped 0.5 to 60. |
+| **`cut_chance_no_gloves`** | 0..1 chance a bare-handed or ruined-glove search cuts the player. Fruit 0.10, mushrooms 0.05, berries 0.15. 0 turns cuts off. |
+| **`glove_damage`** (4.0) | HP an intact glove loses per search while protecting from a cut (about 25 searches to ruin a fresh glove); matches vanilla stick-gathering wear. |
+| **`food_stage_enable`** (1), **`food_dried_chance`** (0.0), **`food_rotten_chance`** (0.10) | roll a dried or rotten food stage on each foraged item, otherwise it spawns fresh. |
 
 The small shock on a cut is a fixed part of the mechanic and is not
 configurable.
