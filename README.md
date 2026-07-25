@@ -3,32 +3,25 @@
 **v1.5.1**
 
 Forage the Chernarus wilderness for food. Three foraging actions on vanilla
-DayZ world objects (pick fruit from trees, mushrooms from stumps and berries
-from bushes) with a bare-hand injury risk, per-object cooldowns and full
+DayZ world objects - pick fruit from trees, mushrooms from stumps, and berries
+from bushes - with a bare-hand injury risk, per-object cooldowns, and full
 server-side tuning. No new items: everything it spawns is vanilla DayZ game
 data.
 
-**This mod is free for community use, repack or fork, and always will be, with
-attribution. See the License section below.**
+**This mod is free for community use, repack or fork - and always will be - with
+attribution. Source code is on GitHub. See the Licence section for details.**
 
 ## What it adds
 
-- **Search for fruit**: search a fruit tree for apples, plums or pears.
-- **Search for mushrooms**: search a tree stump for mushrooms.
-- **Search for berries**: search a berry bush (rose hips, elderberries) for
+- **Search for fruit** - search a fruit tree for apples, plums or pears.
+- **Search for mushrooms** - search a tree stump for mushrooms.
+- **Search for berries** - search a berry bush (rose hips, elderberries) for
   berries.
 
 Each search has its own find chance and yield range. The player's hands must be
-free to search: the first find goes into their empty hands, any extras scatter
-on the ground at their feet.
-
-## Bare hands have a price
-
-Foraging bare-handed, or with ruined gloves, can cut the player: a bleeding
-forearm and a sharp jolt. An intact pair of gloves protects them, but the gloves
-take wear with every search and will eventually ruin. Thorny berry bushes bite
-more often than fruit trees or stumps. The small shock on a cut is a fixed part
-of the mechanic and is not configurable.
+free to search - the first find goes straight into the player's empty hands, and
+any extras scatter on the ground at their feet, each placed with a ground check
+so nothing spawns inside objects or under the floor.
 
 ## Cooldowns
 
@@ -37,57 +30,65 @@ spot can be farmed dry. Cooldowns run on real time and survive server restarts.
 
 ## Food quality
 
-Foraged food can come up fresh, dried or rotten. The odds are server-configurable.
+Foraged food can come up fresh, dried, or rotten - the odds are
+server-configurable. Finds also vary in condition, from slightly worn to
+pristine, with the amount of food scaled to match.
 
-## Server setup: turn off the wild fruit and mushrooms
+## Server setup - turn off the wild fruit and mushrooms
 
-By default DayZ scatters fruit under fruit trees and mushrooms across the
-forest floor on its own, so out of the box players would just pick them up off
-the ground and never need to forage. To make this mod the real source, disable
-those ground spawns in the server's mission `db/events.xml` by setting `active = 0`
-on the six Trajectory events:
+By default DayZ scatters fruit under fruit trees and mushrooms across the forest
+floor on its own, so out of the box players would just pick them up off the
+ground and never need to forage. To make this mod the real source, disable those
+ground spawns in the server's mission `db/events.xml` by setting `active = 0` on
+the six Trajectory events:
 
-- `TrajectoryApple`, `TrajectoryPear`, `TrajectoryPlum` (fruit under trees)
-- `TrajectoryConiferous`, `TrajectoryDeciduous`, `TrajectoryHumus` (forest
-  mushrooms)
+- TrajectoryApple, TrajectoryPear, TrajectoryPlum (fruit under trees)
+- TrajectoryConiferous, TrajectoryDeciduous, TrajectoryHumus (forest mushrooms)
 
-Berries need no change: vanilla already ships those spawns off. Built for
-Chernarus; other maps have their own equivalent Trajectory events for the same
-wild-spawn cleanup.
+Berries need no change - vanilla already ships those spawns off.
 
-## Configuration: foraging.json
+## Configuration - foraging.json
 
-The file is created at `$profile:BNBForaging/foraging.json` on first server
-start and re-saved each boot, so new options from an update appear
-automatically with their defaults.
+The file is created at `$profile:BNBForaging/foraging.json` on first server start
+and re-saved each boot, so new options from an update appear automatically with
+their defaults. One top-level option, plus a block per search:
 
-One top-level option:
-
-- `debug_log` (default `0`): `1` logs every search to the server RPT (tagged
-  `BNB_Foraging::Debug`) with player, target, yield, hands-vs-ground and cut.
+- **debug_log** (default 0) - 1 logs every search to the server RPT (tagged
+  BNB_Foraging::Debug) with player, target, yield, hands-vs-ground and cut.
   Config load success or failure is always logged.
 
-Then a block per search (`search_fruit`, `search_mushrooms`, `search_berries`),
-each carrying the same options. Defaults:
+Each block - **search_fruit**, **search_mushrooms**, **search_berries** -
+carries the same options (defaults shown fruit / mushroom / berry):
 
-| Option | search_fruit | search_mushrooms | search_berries |
-|---|---|---|---|
-| find chance (`0..1`) | `apple`/`plum`/`pear_drop_chance` `0.30` each | `mushroom_find_chance` `0.50` | `berry_find_chance` `0.70` |
-| yield range (inclusive) | `1` to `2` per fruit type | `1` to `3` | `1` to `4` |
-| `*_cooldown_minutes` (0 = none) | `tree` `60` | `stump` `60` | `bush` `60` |
-| `search_duration_seconds` | `10.0` | `10.0` | `10.0` |
-| `cut_chance_no_gloves` (0 = off) | `0.10` | `0.05` | `0.15` |
-| `glove_damage` | `4.0` | `4.0` | `4.0` |
-| `food_stage_enable` / `food_dried_chance` / `food_rotten_chance` | `1` / `0.0` / `0.10` | `1` / `0.0` / `0.10` | `1` / `0.0` / `0.10` |
+- **find chance** - 0..1 chance a search yields. Fruit is per type
+  (apple_drop_chance, plum_drop_chance, pear_drop_chance, 0.30 each);
+  mushroom_find_chance 0.50; berry_find_chance 0.70.
+- **min_count / max_count** - inclusive yield range on a successful search.
+  Fruit 1 to 2 each, mushrooms 1 to 3, berries 1 to 4.
+- **cooldown minutes** - per-object cooldown before the same tree/stump/bush can
+  be searched again (0 = none). 60 (1 hour) by default
+  (tree_/stump_/bush_cooldown_minutes).
+- **search_duration_seconds** (10.0) - how long the player holds the action.
+  Clamped 0.5 to 60.
+- **cut_chance_no_gloves** - 0..1 chance a bare-handed or ruined-glove search
+  cuts the player. Fruit 0.10, mushrooms 0.05, berries 0.15. 0 turns cuts off.
+- **glove_damage** (4.0) - HP an intact glove loses per search while protecting
+  from a cut (about 25 searches to ruin a fresh glove); matches vanilla
+  stick-gathering wear.
+- **food_stage_enable** (1), **food_dried_chance** (0.0), **food_rotten_chance**
+  (0.10) - roll a dried or rotten food stage on each foraged item, otherwise it
+  spawns fresh.
 
-Notes:
+The small shock on a cut is a fixed part of the mechanic and is not
+configurable.
 
-- `glove_damage` is the HP an intact glove loses per protected search (about 25
-  searches to ruin a fresh glove; matches vanilla stick-gathering wear).
-- `search_duration_seconds` is clamped to `0.5..60`, cooldowns to `0..10080`
-  minutes and counts to `0..50`. Chances are clamped to `0..1`.
-- `food_stage_enable` `1` rolls a dried or rotten stage on each foraged item,
-  otherwise it spawns fresh.
+## Compatibility
+
+Server-side driven - clients only need the mod loaded. Spawns vanilla item
+classes only, adds no new loot to balance. Built for Chernarus, but fruit trees
+are recognised from game data rather than a fixed map list, so other maps' apple,
+plum and pear trees should work too; other maps have their own equivalent
+Trajectory events for the same wild-spawn cleanup.
 
 ## Install
 
@@ -115,21 +116,16 @@ Notes:
 
 This repository is a one-way, automatically published mirror of the mod
 shipped on the Steam Workshop. It does not accept issues or pull requests.
-Fork it if you want to build on it, within the license terms below.
+Fork it if you want to build on it, within the licence terms below.
 
 Version history is in [CHANGELOG.md](CHANGELOG.md).
 
-## Credits
+## Licence
 
-All script content is Bullets'n'Bandages-authored. The fruit, mushroom and
-berry classes it spawns from are vanilla DayZ game data; the mod adds no new
-loot to balance.
-
-## License
-
-Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
-Modify, repack and fork for non-commercial use with attribution. See
-[LICENSE](LICENSE).
+Published under Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0):
+modify, repack, fork - non-commercial use only, with attribution. All script
+content is Bullets'n'Bandages-authored; the fruit, mushroom and berry classes it
+spawns from are vanilla DayZ game data. See [LICENSE](LICENSE).
 
 DAYZ is a registered trademark of Bohemia Interactive a.s. This is an
 unofficial modification that is not affiliated or authorized by Bohemia
