@@ -1,7 +1,7 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.1.4
-// Modified:     2026-07-22
+// Version:      v1.1.5
+// Modified:     2026-07-27
 //
 // config.cpp - @BNB-Foraging client+server mod. Adds "Search for fruit" (trees),
 // "Search for mushrooms" (stumps + logs) and "Search for berries" (bushes).
@@ -16,7 +16,7 @@ class CfgPatches
         weapons[] = {};
         requiredVersion = 0.1;
         requiredAddons[] = { "DZ_Data", "DZ_Scripts" };
-        version = "1.5.1";
+        version = "1.5.2";
     };
 };
 
@@ -27,7 +27,7 @@ class CfgMods
         dir = "BNBForaging";
         name = "BNB-Foraging";
         author = "Bushy";
-        version = "1.5.1";
+        version = "1.5.2";
         type = "mod";
         hidePicture = 0;
         hideName = 0;

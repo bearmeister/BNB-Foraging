@@ -1,7 +1,7 @@
 // Organisation: Bullets'n'Bandages
 // Author:       Bushy <contact@bushy.dev>
-// Version:      v1.3.4
-// Modified:     2026-07-22
+// Version:      v1.3.5
+// Modified:     2026-07-27
 //
 // BNB_SharedForageHelpers.c - food-stage roll + apply, the shared hands-first
 // spawn, and the bare-hand cut roll, used by every foraging verb. Chances are
@@ -11,7 +11,7 @@ class BNB_SharedForageHelpers
 {
     // First find goes to empty hands, the rest scatter on the ground so they do
     // not stack. toHands reports which path was taken.
-    static Object SpawnForageItem(PlayerBase player, string className, bool allowHands, out bool toHands)
+    static EntityAI SpawnForageItem(PlayerBase player, string className, bool allowHands, out bool toHands)
     {
         toHands = false;
         if (!GetGame() || !player || className == "")
@@ -24,11 +24,11 @@ class BNB_SharedForageHelpers
             if (held)
             {
                 toHands = true;
-                return Object.Cast(held);
+                return held;
             }
         }
 
-        return Object.Cast(player.SpawnEntityOnGroundRaycastDispersed(className, 1.0, UAItemsSpreadRadius.NARROW));
+        return player.SpawnEntityOnGroundRaycastDispersed(className, 1.0, UAItemsSpreadRadius.NARROW);
     }
 
     // Bare-hand forage cut: an intact worn glove wears + protects; a ruined or

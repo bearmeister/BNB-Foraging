@@ -4,6 +4,12 @@ Notable changes to BNB-Foraging. Versions here follow the Steam Workshop
 releases. Source history in this repository starts at v1.4.4; not every Workshop
 release is tagged here, and earlier entries are recorded for reference.
 
+## v1.5.2
+
+- Housekeeping: an internal return type was corrected, so the engine no
+  longer logs a conversion warning for each foraging spawn at start-up. No
+  change to foraging behaviour.
+
 ## v1.5.1
 
 - The bundled licence now carries the DayZ trademark notice required of

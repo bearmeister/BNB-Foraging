@@ -1,6 +1,6 @@
 # BNB-Foraging
 
-**v1.5.1**
+**v1.5.2**
 
 Forage the Chernarus wilderness for food. Three foraging actions on vanilla
 DayZ world objects - pick fruit from trees, mushrooms from stumps, and berries
