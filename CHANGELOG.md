@@ -1,22 +1,23 @@
 # Changelog
 
-Changes to the source of this mirror, grouped by release and regenerated on
-every publish from its own history. The mirror itself carries a single commit
-per release, so this is where the detail lives. Labels are derived from each
-commit's conventional-commit type. Covers the last 20 changes, so the oldest
-release listed may be partial.
+Changes to the source of this mirror, grouped by the release that first carried
+them and regenerated on every publish. Anything newer than the last release
+sits under Unreleased. The mirror itself carries a single commit per release,
+so this is where the detail lives. Labels are derived from each commit's
+conventional-commit type. Covers the 20 most recent changes as at v1.5.2, so
+the oldest release listed may be partial.
 
 ## v1.5.2
 
 - Fix: 2026-07-27 @BNB-Foraging - 1.5.2 - drop the redundant Object.Cast
   up-casts
-
-## v1.5.1
-
 - Housekeeping: 2026-07-22 mods - header bumps + blank-line cleanup; document
   the hygiene gate
 - Housekeeping: 2026-07-22 foraging - drop the serial comma from the licence
   monetisation list
+
+## v1.5.1
+
 - Feature: 2026-07-22 foraging - 1.5.1 - trademark notice + shipped-set publish
   guards
 
@@ -63,12 +64,12 @@ release listed may be partial.
 
 - Housekeeping: 2026-07-20 foraging - bump @BNB-Foraging to 1.2.1 (built,
   publish pending)
-
-## v1.2.0
-
 - Performance: 2026-07-20 foraging - append-only cooldown log - O(1) per search
 - Housekeeping: 2026-07-20 foraging - purge stale shake-tree/stump-forage
   vocabulary
+
+## v1.2.0
+
 - Feature: 2026-07-20 foraging - @BNB-Foraging 1.2.0 - debug_log flag,
   inventory-first spawn, berry default 0.7
 
@@ -81,10 +82,10 @@ release listed may be partial.
 
 - Feature: 2026-07-20 mods - rename foraging to Search scheme + add Search for
   berries (@BNB-Foraging 1.1.0)
+- Fix: 2026-07-19 mods - align @BNB-Foraging write-defaults with stock, int
+  food_stage_enable
 
 ## v1.0.0
 
-- Fix: 2026-07-19 mods - align @BNB-Foraging write-defaults with stock, int
-  food_stage_enable
 - Feature: 2026-07-19 mods - carve foraging out of @BNB-Custom into standalone
   @BNB-Foraging
